@@ -1,0 +1,69 @@
+
+1.
+........................
+#ifndef STONEWT1_hpp
+#define STONEWT1_hpp
+#include<string>
+//using namespace std;
+class Stonewt
+{
+    enum {Lbs_per_stn=14};
+    int stone;
+    double pds_left;
+    double pounds;
+public:
+    Stonewt(double lbs);
+    Stonewt();
+    void show() const ;
+    ~Stonewt();
+    friend Stonewt operator *(const Stonewt a,double b);
+};
+
+#endif /* bankAcount_hpp */
+...........................
+#include "Stonewt1.hpp"
+#include<iostream>
+#include<array>
+#include<fstream>
+#include<cctype>
+#include<string>
+#include<vector>
+#include<cstring>
+using std::string;
+using std::cout;
+Stonewt::Stonewt(double lbs)
+{
+    stone=0;
+    pounds=lbs;
+    stone=int(lbs)/14;
+    pds_left=lbs-14*stone;
+}
+Stonewt operator *(const Stonewt a,double b)
+{   double st;
+    st=a.pounds*b;
+    return Stonewt(st);
+}
+void Stonewt::show() const{
+    cout<<"The weight is "<<stone<<"stones"<<pds_left<<"pounds";
+}
+Stonewt::~Stonewt()
+{
+    
+}
+--------------------
+#include<iostream>
+#include<array>
+#include<fstream>
+#include<cctype>
+#include<string>
+#include<vector>
+#include<cstring>
+#include "Stonewt1.hpp"
+using namespace std;
+int main()
+{
+    Stonewt a=Stonewt(72);
+    Stonewt b=a*3.2;
+    b.show();
+    
+}
