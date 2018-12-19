@@ -133,3 +133,49 @@ namespace VECTOR
         return os;
     }
 }
+<<<<<<<<<
+#include<iostream>
+#include<fstream>
+#include<array>
+#include<fstream>
+#include<cctype>
+#include<string>
+#include<vector>
+#include<cstring>
+#include<cstdlib>
+#include<ctime>
+#include "vector.hpp"
+using namespace std;
+int main()
+{using VECTOR::Vector;
+  //  ofstream outFile;
+   // outFile.open("ans.txt");
+    srand(time(0));
+    double direction;
+    Vector step;
+    Vector result(0.0,0.0);
+    unsigned long steps=0;
+    double target;
+    double dstep;
+    cout<<"Enter target distance(q to quit)\n";
+    while(cin>>target){
+        cout<<"Enter the step length:";
+        if(!(cin>>dstep))
+            break;
+    while(result.magval()<target)
+    {
+        direction=rand()%360;
+        step.reset(dstep,direction,VECTOR::Vector::POL);
+        result=result+step;
+        steps++;
+    }
+        cout<<"After "<<steps<<"steps,\nthe subject has below following location\n"<<
+        result<<endl;
+        result.polar_mode();
+        cout<<"or:"<<result<<"\nEnter a new number:";
+        result.reset(0,0,Vector::RECT);
+        steps=0;
+    }
+    cout<<"Bye\n";
+    //outFile.close();
+}
