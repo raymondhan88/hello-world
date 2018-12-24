@@ -1,0 +1,55 @@
+<<<<<<<<<<<<<<<
+#include "StringBad.hpp"
+#include<iostream>
+#include<array>
+#include<fstream>
+#include<cctype>
+#include<string>
+#include<vector>
+#include<cstring>
+#include<cmath>
+using std::string;
+using std::cout;
+    int StringBad::num_strings=0;
+StringBad::StringBad(const char* t){
+    len =std::strlen(t);
+    str=new char[len+1];
+    std::strcpy(str,t);
+    num_strings++;
+    cout<<num_strings<<":\""<<str<<"\"object created\n";
+}
+StringBad::StringBad(){
+    len=4;
+    str=new char[4];
+    std::strcpy(str,"C++");
+    num_strings++;
+    cout<<num_strings<<":\""<<str<<"\"object created\n";
+}
+StringBad::~StringBad(){
+    cout<<":\""<<str<<"\"object deleted\n";
+    num_strings--;
+   cout <<num_strings<<"object existed\n";
+    delete []str;
+}
+std::ostream& operator<<(std::ostream& os,const StringBad& st){
+    os<<st.str;
+    return os;
+}
+<<<<<<<<<<<<
+#ifndef  STRINGBAD_hpp
+#define  STRINGBAD_hpp
+#include<iostream>
+class StringBad
+{
+private:
+    char* str;
+    int len;
+    static int num_strings;
+public:
+    StringBad(const char* s);
+    StringBad();
+    ~StringBad();
+    friend std::ostream& operator<<(std::ostream& os,const StringBad& st);
+};
+#endif
+
